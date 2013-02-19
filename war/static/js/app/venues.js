@@ -2,7 +2,7 @@
 (function() {
 
 	var Venue = Backbone.Model.extend({
-
+		url : "/venues"
 	});
 
 	Venues = Backbone.Collection.extend({
@@ -22,6 +22,8 @@
 		el : $("#venues-table"),
 		initialize : function() {
 			this.render();
+			this.collection.on("reset",this.onReset,this);
+			this.collection.on("add",this.onReset,this);
 		},
 		render : function() {
 			this.collection.each(_.bind(function(venue) {
@@ -30,6 +32,10 @@
 				});
 				this.$el.append(row.render().el);
 			}, this));
+		},
+		onReset : function() {
+			this.$el.html("");
+			this.render();
 		}
 	});
 

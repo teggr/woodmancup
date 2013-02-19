@@ -2,6 +2,7 @@
 (function() {
 
 	var Member = Backbone.Model.extend({
+		url : "/members",
 		didAppearFor : function(teamId) {
 			var appearance = _.find(this.get("appearances"), function(
 					appearance) {
@@ -43,6 +44,7 @@
 			this.appearances = options.appearances;
 			this.render();
 			this.collection.on("reset", this.onReset, this);
+			this.collection.on("add", this.onReset, this);
 		},
 		render : function() {
 			this.collection.each(function(member) {

@@ -56,15 +56,9 @@ body {
 	</div>
 
 	<div id="home" class="container page">
-		<div id="new-member" class="well">
+		<div id="new-member" class="row well">
 			<h2>Add a new member</h2>
 			<form class="form-horizontal new-member-form">
-				<div class="control-group">
-					<label class="control-label" for="memberId">Id</label>
-					<div class="controls">
-						<input type="text" id="memberId" placeholder="Unique id">
-					</div>
-				</div>
 				<div class="control-group">
 					<label class="control-label" for="firstname">First Name</label>
 					<div class="controls">
@@ -75,6 +69,34 @@ body {
 					<label class="control-label" for="surname">Surname</label>
 					<div class="controls">
 						<input type="text" id="surname">
+					</div>
+				</div>
+				<div class="control-group">
+					<div class="controls">
+						<button type="submit" class="btn">Create</button>
+					</div>
+				</div>
+			</form>
+		</div>
+		<div id="new-venue" class="row well">
+			<h2>Add a new venue</h2>
+			<form class="form-horizontal new-venue-form">
+				<div class="control-group">
+					<label class="control-label" for="name">Name</label>
+					<div class="controls">
+						<input type="text" id="name">
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label" for="postcode">Post code</label>
+					<div class="controls">
+						<input type="text" id="postcode">
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label" for="website">Web site</label>
+					<div class="controls">
+						<input type="text" id="website">
 					</div>
 				</div>
 				<div class="control-group">

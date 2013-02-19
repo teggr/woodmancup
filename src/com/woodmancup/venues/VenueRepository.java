@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.stereotype.Repository;
@@ -58,6 +59,12 @@ public class VenueRepository implements InitializingBean {
 			}
 		}
 		return null;
+	}
+
+	public Venue create(Venue venue) {
+		venue.setId(UUID.randomUUID().toString());
+		venues.add(venue);
+		return venue;
 	}
 
 }

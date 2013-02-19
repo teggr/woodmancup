@@ -4,11 +4,13 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
+@RequestMapping("/members")
 public class MemberController {
 
 	private MemberRepository memberRepository;
@@ -18,15 +20,15 @@ public class MemberController {
 		this.memberRepository = memberRepository;
 	}
 
-	@RequestMapping(value = "/members", method = RequestMethod.GET)
+	@RequestMapping(method = RequestMethod.GET)
 	@ResponseBody
 	public List<Member> list()  {
 		return memberRepository.getMembers();
 	}
 	
-	@RequestMapping(value = "/members", method = RequestMethod.POST)
+	@RequestMapping(method = RequestMethod.POST)
 	@ResponseBody
-	public Member create(Member member)  {
+	public Member create(@RequestBody Member member)  {
 		return memberRepository.create(member);
 	}
 

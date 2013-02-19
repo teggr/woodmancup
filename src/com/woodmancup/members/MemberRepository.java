@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.stereotype.Repository;
@@ -78,6 +79,7 @@ public class MemberRepository implements InitializingBean {
 	}
 
 	public Member create(Member member) {
+		member.setId(UUID.randomUUID().toString());
 		members.add(member);
 		return member;
 	}
