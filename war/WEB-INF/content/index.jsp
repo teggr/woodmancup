@@ -45,18 +45,8 @@ body {
 					class="icon-bar"></span> <span class="icon-bar"></span>
 				</a> <a class="brand" href="/">Woodman Cup</a>
 				<div class="nav-collapse collapse">
-					<ul class="nav">
-						<li class="active"><a href="/">Home</a></li>
-						<li><a href="/member/list">Members</a></li>
-						<li><a href="/venue/list">Venues</a></li>
-						<li><a href="/tournament/list">Tournaments</a></li>
-						<li><a href="/tournament/2011">2011</a></li>
-						<li><a href="/tournament/2010">2010</a></li>
-						<li><a href="/tournament/2009">2009</a></li>
-						<li><a href="/tournament/2008">2008</a></li>
-						<li><a href="/tournament/2007">2007</a></li>
-						<li><a href="/tournament/2006">2006</a></li>
-						<li><a href="/tournament/2007">2005</a></li>
+					<ul id="menu-bar" class="nav">
+						
 					</ul>
 				</div>
 				<!--/.nav-collapse -->
@@ -64,7 +54,7 @@ body {
 		</div>
 	</div>
 
-	<div class="container">
+	<div id="hall-of-fame" class="container">
 
 		<h1>Woodman Cup Hall Of Fame</h1>
 
@@ -84,8 +74,7 @@ body {
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach var="entry" items="${hallOfFameEntryList}"
-					varStatus="status">
+<%-- 				<c:forEach var="entry" items="${hallOfFameEntryList}" varStatus="status"> --%>
 					<tr>
 						<td>${status.count}</td>
 						<td></td>
@@ -98,7 +87,7 @@ body {
 						<td>${entry.losses}</td>
 						<td>${entry.points}</td>
 					</tr>
-				</c:forEach>
+<%-- 				</c:forEach> --%>
 			</tbody>
 		</table>
 
@@ -138,6 +127,196 @@ body {
 
 	</div>
 	<!-- /container -->
+	
+	<div id="members" class="container">
+
+		<h1>Members</h1>
+		<table  class="table  table-condensed  table-striped ">
+			<thead>
+				<tr>
+					<td>Name</td>
+					<td>Appearances</td>
+				</tr>
+			</thead>
+			<tbody>
+<%-- 				<c:forEach var="member" items="${memberList}"> --%>
+					<tr>
+						<td>${member.firstname} ${member.surname}</td>
+						<td>${member.appearanceCount}</td>
+					</tr>
+<%-- 				</c:forEach> --%>
+			</tbody>
+		</table>
+
+	</div>
+	<!-- /container -->
+	
+	<div id="tournament" class="container">
+
+		<h1>
+			${tournament.venue.name}
+<%-- 			<fmt:formatDate value="${tournament.date}" pattern="yyyy" /> --%>
+		</h1>
+
+		<h2>${tournament.team1.name} [${tournament.team1Points}] vs
+			${tournament.team2.name} [${tournament.team2Points}]</h2>
+
+		<table>
+			<tbody>
+				<tr>
+					<td>
+						<table class="table table-bordered">
+<%-- 							<c:forEach var="player" items="${team1List}"> --%>
+								<tr>
+									<td>${player.firstname} ${player.surname}</td>
+<%-- 									<td><c:if test="${player.captain}">(C)</c:if></td> --%>
+								</tr>
+<%-- 							</c:forEach> --%>
+						</table>
+					</td>
+					<td></td>
+					<td>
+						<table class="table table-bordered">
+<%-- 							<c:forEach var="player" items="${team2List}"> --%>
+								<tr>
+									<td>${player.firstname} ${player.surname}</td>
+<%-- 									<td><c:if test="${player.captain}">(C)</c:if></td> --%>
+								</tr>
+<%-- 							</c:forEach> --%>
+						</table>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+
+<%-- 		<c:if test="${puttOffWinner != null}"> --%>
+			<h2>Putt Off Winner</h2>
+			${puttOffWinner.firstname} ${puttOffWinner.surname}
+<%-- 		</c:if> --%>
+
+<%-- 		<c:if test="${alternativeWoodmanCupWinner !=null}"> --%>
+			<h2>Alternative Woodman Cup Winner</h2>
+			${alternativeWoodmanCupWinner.firstname} ${alternativeWoodmanCupWinner.surname}
+<%-- 		</c:if> --%>
+
+		<h2>Results</h2>
+
+		<table class="table">
+<%-- 			<c:forEach var="session" items="${tournament.sessions}"> --%>
+				<tr class="info">
+					<td colspan="7">
+						<h3>Session ${session.sessionNumber} -
+							${session.sessionFormat}</h3>
+					</td>
+				</tr>
+<%-- 				<c:forEach var="match" items="${session.matches}"> --%>
+					<tr>
+						<td>
+<%-- 						<c:if test="${match.winningTeamId == tournament.team1.id}">W</c:if>  --%>
+<%-- 						<c:if test="${match.winningTeamId == 'draw'}">D</c:if> --%>
+								</td>
+<%-- 						<c:forEach var="group" items="${match.groups}"> --%>
+<%-- 							<c:if test="${group.teamId == tournament.team1.id}"> --%>
+<%-- 								<c:choose> --%>
+<%-- 									<c:when test="${group.memberCount>1}"> --%>
+<%-- 										<c:forEach var="member" items="${group.members}"> --%>
+											<td>${member.surname}</td>
+<%-- 										</c:forEach> --%>
+<%-- 									</c:when> --%>
+<%-- 									<c:otherwise> --%>
+<%-- 										<c:forEach var="member" items="${group.members}"> --%>
+											<td>${member.surname}</td>
+<%-- 										</c:forEach> --%>
+										<td></td>
+<%-- 									</c:otherwise> --%>
+<%-- 								</c:choose> --%>
+<%-- 							</c:if> --%>
+<%-- 						</c:forEach> --%>
+						<td>vs</td>
+<%-- 						<c:forEach var="group" items="${match.groups}"> --%>
+<%-- 							<c:if test="${group.teamId == tournament.team2.id}"> --%>
+<%-- 								<c:choose> --%>
+<%-- 									<c:when test="${group.memberCount>1}"> --%>
+<%-- 										<c:forEach var="member" items="${group.members}"> --%>
+											<td>${member.surname}</td>
+<%-- 										</c:forEach> --%>
+<%-- 									</c:when> --%>
+<%-- 									<c:otherwise> --%>
+<%-- 										<c:forEach var="member" items="${group.members}"> --%>
+											<td>${member.surname}</td>
+<%-- 										</c:forEach> --%>
+<!-- 										<td></td> -->
+<%-- 									</c:otherwise> --%>
+<%-- 								</c:choose> --%>
+<%-- 							</c:if> --%>
+<%-- 						</c:forEach> --%>
+						<td>
+<%-- 						<c:if --%>
+<%-- 								test="${match.winningTeamId == tournament.team2.id}">W</c:if> <c:if --%>
+<%-- 								test="${match.winningTeamId == 'draw'}">D</c:if> --%>
+								</td>
+					</tr>
+<%-- 				</c:forEach> --%>
+<%-- 			</c:forEach> --%>
+		</table>
+
+	</div>
+	<!-- /container -->
+	
+	<div id="tournaments" class="container">
+
+		<h1>Tournaments</h1>
+		<table class="table">
+			<thead>
+				<tr>
+					<td>Date</td>
+					<td>Venue</td>
+					<td></td>
+				</tr>
+			</thead>
+			<tbody>
+<%-- 				<c:forEach var="tournament" items="${tournamentList}"> --%>
+					<tr>
+<%-- 						<td><fmt:formatDate value="${tournament.date}" pattern="yyyy" /></td> --%>
+						<td>${tournament.venue.name}</td>
+						<td><a class="btn btn-primary " href="/tournament/${tournament.id}">View The Results <i class="icon-circle-arrow-right icon-white"></i></a></td>
+					</tr>
+<%-- 				</c:forEach> --%>
+			</tbody>
+		</table>
+
+	</div>
+	<!-- /container -->
+	
+	<div id="venues" class="container">
+
+		<h1>Venues</h1>
+		<table class="table">
+			<thead>
+				<tr>
+					<td>Name</td>
+					<td>Postcode</td>
+					<td>Website</td>
+				</tr>
+			</thead>
+			<tbody>
+<%-- 				<c:forEach var="venue" items="${venueList}"> --%>
+					<tr>
+						<td>${venue.name}</td>
+						<td>${venue.postcode}</td>
+						<td><a href="${venue.website}">${venue.website}</a></td>
+					</tr>
+<%-- 				</c:forEach> --%>
+			</tbody>
+		</table>
+
+	</div>
+	<!-- /container -->
+	
+	<!-- templates -->
+	<script type="text/templates" id="menu-bar-item-template">
+		<a href="{{ link }}">{{ name }}</a>
+	</script>
 
 	<!-- Le javascript
     ================================================== -->
@@ -145,7 +324,10 @@ body {
 	<script
 		src="//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
 	<script src="../static/js/bootstrap.min.js"></script>
+	<script src="../static/js/underscore.js"></script>
+	<script src="../static/js/backbone.js"></script>
+	
+	<script src="../static/js/main.js"></script>
 		
-
 </body>
 </html>
