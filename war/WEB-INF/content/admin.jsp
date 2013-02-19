@@ -44,7 +44,7 @@ body {
 				<a class="btn btn-navbar" data-toggle="collapse"
 					data-target=".nav-collapse"> <span class="icon-bar"></span> <span
 					class="icon-bar"></span> <span class="icon-bar"></span>
-				</a> <a class="brand" href="#">Woodman Cup</a>
+				</a> <a class="brand" href="#">Woodman Cup Admin</a>
 				<div class="nav-collapse collapse">
 					<ul id="menu-bar" class="nav">
 
@@ -54,88 +54,43 @@ body {
 			</div>
 		</div>
 	</div>
-	
+
 	<div id="home" class="container page">
-	</div>
-
-	<div id="hall-of-fame" class="container page">
-
-		<h1>Woodman Cup Hall Of Fame</h1>
-
-		<table id="hall-of-fame-table" class="table  table-condensed  table-striped table-bordered">
-			<thead>
-				<tr>
-					<td>Pos</td>
-					<td>+/-</td>
-					<td>Player</td>
-					<td>Victories</td>
-					<td>AWC</td>
-					<td>Putt</td>
-					<td>W</td>
-					<td>D</td>
-					<td>L</td>
-					<td>Total</td>
-				</tr>
-			</thead>
-			<tbody>
-				<%-- 				<c:forEach var="entry" items="${hallOfFameEntryList}" varStatus="status"> --%>
-				<tr>
-					<td>${status.count}</td>
-					<td></td>
-					<td>${entry.member.firstname} ${entry.member.surname}</td>
-					<td>${entry.victories}</td>
-					<td>${entry.alternativeWoodmanCupWins}</td>
-					<td>${entry.puttOffWins}</td>
-					<td>${entry.wins}</td>
-					<td>${entry.draws}</td>
-					<td>${entry.losses}</td>
-					<td>${entry.points}</td>
-				</tr>
-				<%-- 				</c:forEach> --%>
-			</tbody>
-		</table>
-
-		<div>
-
-			<table class="table table-condensed table-striped table-bordered">
-				<tbody>
-
-					<tr>
-						<td>Woodman Cup Victory</td>
-						<td>5 pts</td>
-					</tr>
-					<tr>
-						<td>Alternative Woodman Cup Win</td>
-						<td>4 pts</td>
-					</tr>
-					<tr>
-						<td>Putt Off Win</td>
-						<td>4 pts</td>
-					</tr>
-					<tr>
-						<td>Win</td>
-						<td>3 pts</td>
-					</tr>
-					<tr>
-						<td>Draw</td>
-						<td>1 pts</td>
-					</tr>
-					<tr>
-						<td>Loss</td>
-						<td>0 pts</td>
-					</tr>
-				</tbody>
-			</table>
-
+		<div id="new-member" class="well">
+			<h2>Add a new member</h2>
+			<form class="form-horizontal new-member-form">
+				<div class="control-group">
+					<label class="control-label" for="memberId">Id</label>
+					<div class="controls">
+						<input type="text" id="memberId" placeholder="Unique id">
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label" for="firstname">First Name</label>
+					<div class="controls">
+						<input type="text" id="firstname">
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label" for="surname">Surname</label>
+					<div class="controls">
+						<input type="text" id="surname">
+					</div>
+				</div>
+				<div class="control-group">
+					<div class="controls">
+						<button type="submit" class="btn">Create</button>
+					</div>
+				</div>
+			</form>
 		</div>
-
 	</div>
-	<!-- /container -->
 
 	<div id="members" class="container page">
 
 		<h1>Members</h1>
-		<table id="members-table" class="table  table-condensed  table-striped ">
+		<table id="members-table"
+			class="table  table-condensed  table-striped ">
 			<thead>
 				<tr>
 					<td>Name</td>
@@ -150,11 +105,7 @@ body {
 	</div>
 	<!-- /container -->
 
-	<div id="tournament" class="container page">
-
-		
-
-	</div>
+	<div id="tournament" class="container page"></div>
 	<!-- /container -->
 
 	<div id="tournaments" class="container page">
@@ -169,7 +120,7 @@ body {
 				</tr>
 			</thead>
 			<tbody>
-				
+
 			</tbody>
 		</table>
 
@@ -188,7 +139,7 @@ body {
 				</tr>
 			</thead>
 			<tbody>
-				
+
 			</tbody>
 		</table>
 
@@ -204,13 +155,13 @@ body {
 		<td><@= firstname @> <@= surname @></td>
 		<td><@= appearances.length @></td>
 	</script>
-	
+
 	<script type="text/template" id="venue-row-template">
 		<td><@= name @></td>
 		<td><@= postcode @></td>
 		<td><a href="<@= website @>"><@= website @></a></td>
 	</script>
-	
+
 	<script type="text/template" id="tournament-row-template">
 		<td><@= date @></td>
 		<td><@= venue.name @></td>
@@ -218,20 +169,7 @@ body {
 			href="#!/tournaments/<@= id @>">View The Results <i
 				class="icon-circle-arrow-right icon-white"></i></a></td>
 	</script>
-	
-	<script type="text/template" id="hall-of-fame-row-template">
-		<td><@= position @></td>
-		<td></td>
-		<td><@= member.firstname @> <@= member.surname @></td>
-		<td><@= victories @></td>
-		<td><@= alternativeWoodmanCupWins @></td>
-		<td><@= puttOffWins @></td>
-		<td><@= wins @></td>
-		<td><@= draws @></td>
-		<td><@= losses @></td>
-		<td><@= points @></td>
-	</script>
-	
+
 	<script type="text/template" id="tournament-template">
 
 		<h1>
@@ -334,29 +272,26 @@ body {
 	<script src="../static/js/vendor/bootstrap.min.js"></script>
 	<script src="../static/js/vendor/underscore.js"></script>
 	<script src="../static/js/vendor/backbone.js"></script>
-	
+
 	<script src="../static/js/config.js"></script>
-	
+
 	<script src="../static/js/app/appearances.js"></script>
 	<script src="../static/js/app/members.js"></script>
 	<script src="../static/js/app/venues.js"></script>
 	<script src="../static/js/app/tournaments.js"></script>
-	<script src="../static/js/app/halloffame.js"></script>
 	<script src="../static/js/app/menu.js"></script>
+	<script src="../static/js/app/admin.js"></script>
 
 	<script type="text/javascript">
-	
 		StaticData = {};
-		StaticData.members =  <c:out value="${members}" escapeXml="false" /> ;
-		StaticData.venues =  <c:out value="${venues}" escapeXml="false" /> ;
-		StaticData.tournaments =  <c:out value="${tournaments}" escapeXml="false" /> ;
-		StaticData.halloffameentries =  <c:out value="${hallOfFameEntries}" escapeXml="false" /> ;
-		StaticData.appearances =  <c:out value="${appearances}" escapeXml="false" /> ;
-			
+		StaticData.members = <c:out value="${members}" escapeXml="false" />;
+		StaticData.venues = <c:out value="${venues}" escapeXml="false" />;
+		StaticData.tournaments = <c:out value="${tournaments}" escapeXml="false" />;
+		StaticData.appearances = <c:out value="${appearances}" escapeXml="false" />;
 	</script>
 
 
-	<script src="../static/js/main.js"></script>
+	<script src="../static/js/main-admin.js"></script>
 
 </body>
 </html>

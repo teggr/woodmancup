@@ -13,13 +13,6 @@
 
 	<mvc:annotation-driven />
 
-	<bean id="statisticsService" class="com.woodmancup.StatisticsService" />
-
-	<bean id="memberRepository" class="com.woodmancup.MemberRepository" />
-	<bean id="venueRepository" class="com.woodmancup.VenueRepository" />
-	<bean id="tournamentRepository" class="com.woodmancup.TournamentRepository" />
-	<bean id="sessionRepository" class="com.woodmancup.SessionRepository" />
-
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix">

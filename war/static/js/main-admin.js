@@ -54,12 +54,6 @@
 		});
 		StaticData.tournaments = null;
 
-		var hallOfFameEntries = new HallOfFameEntries(
-				StaticData.halloffameentries, {
-					parse : true
-				});
-		StaticData.halloffameentries = null;
-
 		var appearances = new Appearances(StaticData.appearances, {
 			parse : true
 		});
@@ -67,9 +61,6 @@
 
 		var tournamentViewModel = new TournamentViewModel;
 
-		new HallOfFameTable({
-			collection : hallOfFameEntries
-		});
 		new MenuBar({
 			collection : menuItems
 		});
@@ -88,6 +79,12 @@
 			members : members,
 			appearances : appearances
 		});
+		new AdminHome({
+			tournaments : tournaments,
+			members : members,
+			appearances : appearances,
+			venues : venues
+		});
 
 		var Router = Backbone.Router.extend({
 			routes : {
@@ -99,7 +96,7 @@
 			},
 			home : function() {
 				menuItems.activateMenuItem("#");
-				this.activateView("hall-of-fame");
+				this.activateView("home");
 			},
 			listMembers : function() {
 				menuItems.activateMenuItem("#!/members");
