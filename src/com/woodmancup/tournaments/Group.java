@@ -11,7 +11,6 @@ public class Group {
 		Group group = new Group();
 		group.teamId = teamId;
 		group.members = Arrays.asList(members);
-		System.out.println(teamId + " " + group.members);
 		return group;
 	}
 
