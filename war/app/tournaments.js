@@ -12,7 +12,7 @@
 	});
 
 	Tournaments = Backbone.Collection.extend({
-		url : "/api/tournaments",
+		url : BASE_URL + "/api/tournaments",
 		model : Tournament
 	});
 

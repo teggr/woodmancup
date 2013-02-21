@@ -12,7 +12,7 @@
 	});
 
 	Members = Backbone.Collection.extend({
-		url : "/api/members",
+		url : BASE_URL + "/api/members",
 		model : Member,
 		findPlayersByTeamId : function(teamId) {
 			return this.filter(function(member) {

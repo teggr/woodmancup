@@ -15,7 +15,7 @@
 	});
 
 	HallOfFameEntries = Backbone.Collection.extend({
-		url : "/api/statistics",
+		url : BASE_URL + "/api/statistics",
 		model : HallOfFameEntry
 	});
 

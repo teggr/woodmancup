@@ -5,7 +5,7 @@
 	});
 
 	Venues = Backbone.Collection.extend({
-		url : "/api/venues",
+		url : BASE_URL + "/api/venues",
 		model : Venue
 	});
 

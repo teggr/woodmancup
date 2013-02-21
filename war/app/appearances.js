@@ -12,7 +12,7 @@
 	});
 
 	Appearances = Backbone.Collection.extend({
-		url : "/api/appearances",
+		url : BASE_URL + "/api/appearances",
 		model : Appearance,
 		getAppearancesByMember : function(memberId) {
 			return this.filter(function(appearance) {
