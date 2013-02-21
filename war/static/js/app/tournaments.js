@@ -12,6 +12,7 @@
 	});
 
 	Tournaments = Backbone.Collection.extend({
+		url : "/api/tournaments",
 		model : Tournament
 	});
 
@@ -75,6 +76,7 @@
 		el : $("#tournaments-table"),
 		initialize : function() {
 			this.render();
+			this.collection.on("reset",this.onReset,this);
 		},
 		render : function() {
 			this.collection.each(_.bind(function(member) {
@@ -83,6 +85,10 @@
 				});
 				this.$el.append(row.render().el);
 			}, this));
+		},
+		onReset : function() {
+			this.$el.find("tbody").html("");
+			this.render();
 		}
 	});
 

@@ -15,6 +15,7 @@
 	});
 
 	HallOfFameEntries = Backbone.Collection.extend({
+		url : "/api/statistics",
 		model : HallOfFameEntry
 	});
 
@@ -38,6 +39,7 @@
 		el : $("#hall-of-fame-table"),
 		initialize : function() {
 			this.render();
+			this.collection.on("reset", this.onReset, this);
 		},
 		render : function() {
 			var count = 1;
@@ -49,6 +51,10 @@
 				this.$el.append(row.render().el);
 				count++;
 			}, this));
+		},
+		onReset : function() {
+			this.$el.find("tbody").html("");
+			this.render();
 		}
 	});
 

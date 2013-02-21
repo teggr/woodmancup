@@ -2,10 +2,10 @@
 (function() {
 
 	var Venue = Backbone.Model.extend({
-		url : "/venues"
 	});
 
 	Venues = Backbone.Collection.extend({
+		url : "/api/venues",
 		model : Venue
 	});
 
@@ -34,7 +34,7 @@
 			}, this));
 		},
 		onReset : function() {
-			this.$el.html("");
+			this.$el.find("tbody").html("");
 			this.render();
 		}
 	});

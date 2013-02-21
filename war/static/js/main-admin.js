@@ -39,25 +39,18 @@
 			name : "2005"
 		} ]);
 
-		var members = new Members(StaticData.members, {
-			parse : true
-		});
-		StaticData.members = null;
-
-		var venues = new Venues(StaticData.venues, {
-			parse : true
-		});
-		StaticData.venues = null;
-
-		var tournaments = new Tournaments(StaticData.tournaments, {
-			parse : true
-		});
-		StaticData.tournaments = null;
-
-		var appearances = new Appearances(StaticData.appearances, {
-			parse : true
-		});
-		StaticData.appearances = null;
+		var members = new Members;
+		var venues = new Venues;
+		var tournaments = new Tournaments;
+		var appearances = new Appearances;
+		
+		members.fetch({success:function(){
+			venues.fetch({success:function() {				
+				tournaments.fetch({success:function(){					
+					appearances.fetch();					
+				}});				
+			}});			
+		}});
 
 		var tournamentViewModel = new TournamentViewModel;
 

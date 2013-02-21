@@ -2,7 +2,6 @@
 (function() {
 
 	var Member = Backbone.Model.extend({
-		url : "/members",
 		didAppearFor : function(teamId) {
 			var appearance = _.find(this.get("appearances"), function(
 					appearance) {
@@ -13,6 +12,7 @@
 	});
 
 	Members = Backbone.Collection.extend({
+		url : "/api/members",
 		model : Member,
 		findPlayersByTeamId : function(teamId) {
 			return this.filter(function(member) {
@@ -57,7 +57,7 @@
 			}, this);
 		},
 		onReset : function() {
-			this.$el.html("");
+			this.$el.find("tbody").html("");
 			this.render();
 		}
 	});
