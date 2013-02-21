@@ -44,10 +44,10 @@
 		var tournaments = new Tournaments;
 		var appearances = new Appearances;
 		
-		members.fetch({success:function(){
-			venues.fetch({success:function() {				
-				tournaments.fetch({success:function(){					
-					appearances.fetch();					
+		appearances.fetch({success:function(){
+			members.fetch({success:function() {				
+				venues.fetch({success:function(){					
+					tournaments.fetch();					
 				}});				
 			}});			
 		}});

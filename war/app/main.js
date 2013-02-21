@@ -45,10 +45,10 @@
 		var hallOfFameEntries = new HallOfFameEntries;
 		var appearances = new Appearances;
 		
-		members.fetch({success:function(){
-			venues.fetch({success:function() {				
-				tournaments.fetch({success:function(){					
-					appearances.fetch({success:function(){						
+		appearances.fetch({success:function(){						
+			members.fetch({success:function(){
+				venues.fetch({success:function() {				
+					tournaments.fetch({success:function(){					
 						hallOfFameEntries.fetch();						
 					}});					
 				}});				
