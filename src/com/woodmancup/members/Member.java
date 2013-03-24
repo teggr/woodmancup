@@ -1,5 +1,9 @@
 package com.woodmancup.members;
 
+import java.util.List;
+
+import com.woodmancup.tournaments.Appearance;
+
 public class Member {
 
 	public static Member newInstance(String id, String firstname, String surname) {
@@ -13,6 +17,7 @@ public class Member {
 	private String firstname;
 	private String surname;
 	private String id;
+	private List<Appearance> appearances;
 
 	public void setFirstname(String firstname) {
 		this.firstname = firstname;
@@ -42,6 +47,14 @@ public class Member {
 	public String toString() {
 		return "Member [firstname=" + firstname + ", surname=" + surname
 				+ ", id=" + id + "]";
+	}
+
+	public void setAppearances(List<Appearance> appearances) {
+		this.appearances = appearances;
+	}
+	
+	public List<Appearance> getAppearances() {
+		return appearances;
 	}
 
 }

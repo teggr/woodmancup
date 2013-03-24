@@ -1,0 +1,22 @@
+<div id="venues" class="container page">
+
+	<h1>Venues</h1>
+	<table id="venues-table" class="table">
+		<thead>
+			<tr>
+				<td>Name</td>
+				<td>Postcode</td>
+				<td>Website</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="venue in venues">
+				<td>{{ venue.name }}</td>
+				<td>{{ venue.postcode }}</td>
+				<td><a href="{{ venue.website }}">{{ venue.website }}</a>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+
+</div>

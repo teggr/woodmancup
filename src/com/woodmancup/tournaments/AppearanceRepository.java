@@ -146,4 +146,14 @@ public class AppearanceRepository implements InitializingBean {
 		return list;
 	}
 
+	public List<Appearance> getAppearancesByTeam(String teamId) {
+		List<Appearance> list = new ArrayList<Appearance>();
+		for (Appearance appearance : appearances) {
+			if (appearance.getTeamId().equals(teamId)) {
+				list.add(appearance);
+			}
+		}
+		return list;
+	}
+
 }

@@ -1,0 +1,28 @@
+<div id="tournaments" class="container page">
+
+		<h1>Tournaments</h1>
+		<table id="tournaments-table" class="table">
+			<thead>
+				<tr>
+					<td>Date</td>
+					<td>Venue</td>
+					<td></td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="tournament in tournaments">
+					<td>{{ tournament.date | date:'yyyy' }}</td>
+					<td>{{ tournament.venue.name }}</td>
+					<td><a class="btn btn-primary "
+						href="#/tournaments/{{ tournament.id }}">View The Results <i
+							class="icon-circle-arrow-right icon-white"></i></a></td>
+				</tr>
+			</tbody>
+		</table>
+
+	</div>
+	<!-- /container -->
+	
+		<script type="text/template" id="tournament-row-template">
+		
+	</script>

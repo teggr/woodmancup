@@ -3,6 +3,7 @@ package com.woodmancup.tournaments;
 import java.util.Date;
 import java.util.List;
 
+import com.woodmancup.members.Member;
 import com.woodmancup.venues.Venue;
 
 public class Tournament {
@@ -25,6 +26,8 @@ public class Tournament {
 	private Team team1;
 	private Team team2;
 	private List<Session> sessions;
+	private List<Member> team1Members;
+	private List<Member> team2Members;
 
 	public Venue getVenue() {
 		return venue;
@@ -82,5 +85,21 @@ public class Tournament {
 			points += session.getTeamPoints(team.getId());
 		}
 		return points;
+	}
+
+	public void setTeam1Members(List<Member> team1Members) {
+		this.team1Members = team1Members;
+	}
+
+	public List<Member> getTeam1Members() {
+		return team1Members;
+	}
+
+	public void setTeam2Members(List<Member> team2Members) {
+		this.team2Members = team2Members;
+	}
+
+	public List<Member> getTeam2Members() {
+		return team2Members;
 	}
 }

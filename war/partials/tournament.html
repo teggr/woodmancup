@@ -1,0 +1,62 @@
+<div id="tournament" class="container page">
+
+		<h1>
+			{{ tournament.venue.name }} {{ tournament.date | date:'yyyy' }}
+		</h1>
+
+		<h2>{{ tournament.team1.name }} [{{ tournament.team1Points }}] vs
+			{{ tournament.team2.name }} [{{ tournament.team2Points }}]</h2>
+
+		<table>
+			<tbody>
+				<tr>
+					<td>
+						<table class="table table-bordered">
+							<tr ng-repeat="player in tournament.team1Members" ng-switch on="player.captain">
+								<td>{{ player.firstname }} {{ player.surname }}</td>
+								<td ng-switch-when="true">(C)</td>
+								<td ng-switch-when="false"></td>
+							</tr>
+						</table>
+					</td>
+					<td></td>
+					<td>
+						<table class="table table-bordered">
+							<tr ng-repeat="player in tournament.team2Members" ng-switch on="player.captain">
+								<td>{{ player.firstname }} {{ player.surname }}</td>
+								<td ng-switch-when="true">(C)</td>
+								<td ng-switch-when="false"></td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+
+
+		<h2>Results</h2>
+
+		<table class="table">
+			<tbody ng-repeat="session in tournament.sessions">
+				<tr class="info" >
+					<td colspan="7">
+						<h3>Session {{ session.sessionNumber }} -
+							{{ session.sessionFormat }}</h3>
+					</td>
+				</tr>
+				<tr ng-controller="MatchCtrl" ng-repeat="match in session.matches">
+					<td>
+						{{ matchResultAsString( match.winningTeamId, tournament.team1.id ) }}
+					</td>
+					<td ng-repeat="member in team1Members" >{{ member.surname }}</td>
+					<td ng-show="team1Members.length==1" >{{ member.surname }}</td>
+					<td>vs</td>
+				<td ng-show="team2Members.length==1">{{ member.surname }}</td>
+				<td ng-repeat="member in team2Members">{{ member.surname }}</td>
+					<td>{{ matchResultAsString( match.winningTeamId,
+					tournament.team2.id ) }}</td>
+				</tr>
+			</tbody>
+		</table>
+
+	</div>

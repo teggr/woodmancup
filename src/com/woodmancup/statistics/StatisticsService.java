@@ -66,6 +66,10 @@ public class StatisticsService {
 			list.add(entry);
 		}
 		Collections.sort(list, POINT_SORT);
+		for (int i = 0; i < list.size(); i++) {
+			HallOfFameEntry hallOfFameEntry = list.get(i);
+			hallOfFameEntry.setPosition(i+1);
+		}
 		return list;
 	}
 

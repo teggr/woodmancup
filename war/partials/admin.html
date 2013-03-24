@@ -1,0 +1,64 @@
+
+<div id="home" class="container page">
+
+	<ul class="nav nav-tabs">
+		<li ng-class="{ active: isActive('members') }"><a
+			href="#/admin/members">Members</a>
+		</li>
+		<li ng-class="{ active: isActive('venues') }"><a href="#/admin/venues">Venues</a>
+		</li>
+	</ul>
+
+	<div ng-show="isActive('members')" id="new-member" class="row well">
+		<div class="span12">
+			<h2>Add a new member</h2>
+			<form class="form-horizontal new-member-form"
+				ng-controller="NewMemberCtrl" ng-submit="createMember()">
+				<div class="control-group">
+					<label class="control-label" for="firstname">First Name</label>
+					<div class="controls">
+						<input type="text" id="firstname" ng-model="member.firstname">
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label" for="surname">Surname</label>
+					<div class="controls">
+						<input type="text" id="surname" ng-model="member.surname">
+					</div>
+				</div>
+				<div class="form-actions">
+					<button type="submit" class="btn btn-primary">Create</button>
+				</div>
+			</form>
+		</div>
+	</div>
+	<div ng-show="isActive('venues')" id="new-venue" class="row well">
+		<div class="span12">
+			<h2>Add a new venue</h2>
+			<form class="form-horizontal new-venue-form"
+				ng-controller="NewVenueCtrl" ng-submit="createVenue()">
+				<div class="control-group">
+					<label class="control-label" for="name">Name</label>
+					<div class="controls">
+						<input type="text" id="name" ng-model="venue.name">
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label" for="postcode">Post code</label>
+					<div class="controls">
+						<input type="text" id="postcode" ng-model="venue.postcode">
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label" for="website">Web site</label>
+					<div class="controls">
+						<input type="text" id="website" ng-model="venue.website">
+					</div>
+				</div>
+				<div class="form-actions">
+					<button type="submit" class="btn btn-primary">Create</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

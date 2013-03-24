@@ -18,6 +18,7 @@ public class HallOfFameEntry {
 	private int draws =0;
 	private int losses = 0;
 	private Member member;
+	private int position;
 	
 	private HallOfFameEntry(int victories, int alternativeWoodmanCupWins,
 			int puttOffWins, int wins, int draws, int losses, Member member) {
@@ -67,6 +68,14 @@ public class HallOfFameEntry {
 		total += wins * 3;
 		total += draws * 1;
 		return total;
+	}
+
+	public void setPosition(int position) {
+		this.position = position;
+	}
+	
+	public int getPosition() {
+		return position;
 	}
 
 }

@@ -1,0 +1,71 @@
+<div id="hall-of-fame" class="container page">
+
+		<h1>Woodman Cup Hall Of Fame</h1>
+
+		<table id="hall-of-fame-table" class="table  table-condensed  table-striped table-bordered">
+			<thead>
+				<tr>
+					<td>Pos</td>
+					<td>+/-</td>
+					<td>Player</td>
+					<td>Victories</td>
+					<td>AWC</td>
+					<td>Putt</td>
+					<td>W</td>
+					<td>D</td>
+					<td>L</td>
+					<td>Total</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="entry in halloffameentries">
+					<td>{{ entry.position }}</td>
+					<td></td>
+					<td>{{ entry.member.firstname }} {{ entry.member.surname }}</td>
+					<td>{{ entry.victories }}</td>
+					<td>{{ entry.alternativeWoodmanCupWins }}</td>
+					<td>{{ entry.puttOffWins }}</td>
+					<td>{{ entry.wins }}</td>
+					<td>{{ entry.draws }}</td>
+					<td>{{ entry.losses }}</td>
+					<td>{{ entry.points }}</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<div>
+
+			<table class="table table-condensed table-striped table-bordered">
+				<tbody>
+
+					<tr>
+						<td>Woodman Cup Victory</td>
+						<td>5 pts</td>
+					</tr>
+					<tr>
+						<td>Alternative Woodman Cup Win</td>
+						<td>4 pts</td>
+					</tr>
+					<tr>
+						<td>Putt Off Win</td>
+						<td>4 pts</td>
+					</tr>
+					<tr>
+						<td>Win</td>
+						<td>3 pts</td>
+					</tr>
+					<tr>
+						<td>Draw</td>
+						<td>1 pts</td>
+					</tr>
+					<tr>
+						<td>Loss</td>
+						<td>0 pts</td>
+					</tr>
+				</tbody>
+			</table>
+
+		</div>
+
+	</div>
+	<!-- /container -->
