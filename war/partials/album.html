@@ -1,0 +1,19 @@
+<div id="photos" class="container page">
+
+	<h1 ng-click="closePhoto($event)">{{album.title}}</h1>
+	<ul class="thumbnails" ng-show="photoUrl == null">
+		<li class="span2" ng-repeat="photo in photos">
+			<a href="{{ photo.url }}" class="thumbnail" ng-click="showPhoto($event,photo)" scroll-if="photo.lastViewed && photoUrl == null">
+				<img src="{{ photo.thumbnail.url }}" alt="" width="120" height="120"/>			
+			</a>
+		</li>
+	</ul>
+	<div ng-show="photoUrl != null">
+		<img src="{{ photoUrl }}" alt="" />
+		<p>
+		<button class="btn btn-primary" ng-click="closePhoto($event)"><i class="icon-chevron-left icon-white"></i> Back</button>
+		</p>
+	</div>
+
+</div>
+<!-- /container -->

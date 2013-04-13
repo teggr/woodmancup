@@ -1,0 +1,16 @@
+<div id="albums" class="container page">
+
+	<h1>Albums</h1>
+	<ul class="thumbnails">
+		<li class="span2" ng-repeat="album in albums">
+			<div class="thumbnail">
+				<a href="#/photos/{{ album.id }}" class="href">
+					<img src="{{ album.thumbnail.url }}" alt="" />
+					<p>{{ album.title }}</p>					
+				</a>
+			</div>
+		</li>
+	</ul>
+
+</div>
+<!-- /container -->

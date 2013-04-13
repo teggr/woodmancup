@@ -2,6 +2,76 @@
 
 /* Controllers */
 
+var controllers = angular.module('myApp.controllers', []);
+
+controllers.controller("PhotosCtrl", [ '$scope', '$http', function($scope, $http) {
+	$http.jsonp('https://picasaweb.google.com/data/feed/api/user/111339627865632981527?alt=json&callback=JSON_CALLBACK', {
+		headers : {
+			"GData-Version": 2
+		}
+	}).success(function(data,status,headers,config) {
+		$scope.albums = [];
+		angular.forEach(data.feed.entry, function(entry){
+			if(entry.gphoto$name && entry.gphoto$name.$t && entry.gphoto$name.$t.indexOf("WoodmanCup") != -1 ) {
+				//console.log(entry);
+				this.push({
+					title: entry.title.$t,
+					thumbnail : entry.media$group.media$thumbnail[0],
+					id : entry.gphoto$id.$t
+				});
+			}
+		}, $scope.albums);
+	}).error(function(data,status,headers,config) {
+		console.log(data);
+	});
+} ]);
+
+controllers.controller("AlbumCtrl", [ '$scope', '$http', '$routeParams', function($scope, $http, $routeParams) {
+	
+	$scope.photoUrl = null;
+	
+	$http.jsonp('https://picasaweb.google.com/data/feed/api/user/111339627865632981527/albumid/'+$routeParams.id+'?alt=json&callback=JSON_CALLBACK', {
+		headers : {
+			"GData-Version": 2
+		}
+	}).success(function(data,status,headers,config) {
+		$scope.album = {
+			title : data.feed.title.$t
+		};
+		
+		$scope.photos = [];
+		console.log(data);
+		angular.forEach(data.feed.entry, function(entry){
+			this.push({
+				title: entry.title.$t,
+				thumbnail : entry.media$group.media$thumbnail[1],
+				url : entry.content.src
+			});
+		}, $scope.photos);
+		
+	}).error(function(data,status,headers,config) {
+		console.log(data);
+	});
+	
+	$scope.showPhoto = function($event,photo) {
+		angular.forEach($scope.photos, function(photo){
+			photo.lastViewed = false;
+		});
+		photo.lastViewed = true;
+		$scope.photoUrl = photo.url;
+		$event.preventDefault();
+		return false;
+	};
+	
+	$scope.closePhoto = function($event) {
+		if($scope.photoUrl) {
+			$scope.photoUrl = null;
+		}
+		$event.preventDefault();
+		return false;
+	};
+} ]);
+
 function MenuCtrl($scope, $location) {
 	$scope.isActive = function(route) {
 		return $location.path() ==  ("/" + route);

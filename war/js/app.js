@@ -2,10 +2,12 @@
 
 
 // Declare app level module which depends on filters, and services
-angular.module('myApp', ['myApp.filters', 'myApp.services', 'myApp.directives']).
+angular.module('myApp', ['myApp.filters', 'myApp.services', 'myApp.directives', 'myApp.controllers']).
   config(['$routeProvider', function($routeProvider) {
-	$routeProvider.when('/admin', {templateUrl: 'partials/admin.html', controller: AdminCtrl});
+	$routeProvider.when('/photos/:id', {templateUrl: 'partials/album.html', controller: "AlbumCtrl"});
+	$routeProvider.when('/photos', {templateUrl: 'partials/photos.html', controller: "PhotosCtrl"});
 	$routeProvider.when('/admin/:section', {templateUrl: 'partials/admin.html', controller: AdminCtrl});
+	$routeProvider.when('/admin', {templateUrl: 'partials/admin.html', controller: AdminCtrl});
     $routeProvider.when('/members', {templateUrl: 'partials/members.html', controller: MembersCtrl});
     $routeProvider.when('/venues', {templateUrl: 'partials/venues.html', controller: VenuesCtrl});
     $routeProvider.when('/tournaments', {templateUrl: 'partials/tournaments.html', controller: TournamentsCtrl});

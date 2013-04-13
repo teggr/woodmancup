@@ -32,13 +32,15 @@
 				<a class="btn btn-navbar" data-toggle="collapse"
 					data-target=".nav-collapse"> <span class="icon-bar"></span> <span
 					class="icon-bar"></span> <span class="icon-bar"></span>
-				</a> <a class="brand" href="#">Woodman Cup</a>
+				</a> 
+				<a class="brand" href="#">Woodman Cup</a>
 				<div class="nav-collapse collapse">
 					<ul id="menu-bar" class="nav">
-					  	<li ng-class="{ active: isActive('hall-of-fame') }"><a href="#/hall-of-fame">Hall Of Fame</a></li>
-					    <li ng-class="{ active: isActive('members') }"><a href="#/members">Members</a></li>
-					    <li ng-class="{ active: isActive('venues') }"><a href="#/venues">Venues</a></li>
-					    <li ng-class="{ active: isActive('tournaments') }"><a href="#/tournaments">Tournaments</a></li>
+					  	<li ng-class="{ active: isActive('hall-of-fame') }"><a href="#/hall-of-fame" menu-button>Hall Of Fame</a></li>
+					    <li ng-class="{ active: isActive('photos') }"><a href="#/photos" menu-button>Photos</a></li>
+					    <li ng-class="{ active: isActive('members') }"><a href="#/members" menu-button>Members</a></li>
+					    <li ng-class="{ active: isActive('venues') }"><a href="#/venues" menu-button>Venues</a></li>
+					    <li ng-class="{ active: isActive('tournaments') }"><a href="#/tournaments" menu-button>Tournaments</a></li>
 					</ul>
 				</div>
 				<!--/.nav-collapse -->
