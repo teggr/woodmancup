@@ -19,13 +19,14 @@ public class AppearanceRepository implements InitializingBean {
 				Appearance.newInstance("chalice"),
 				Appearance.newInstance("mutiny"),
 				Appearance.newInstance("sinn"), Appearance.newInstance("top"),
-				Appearance.newInstance("pink"));
+				Appearance.newInstance("pink"), Appearance.newInstance("gunt"));
 
 		addAppearancesFor("sturds", Appearance.newInstanceAsCaptain("gash"),
 				Appearance.newInstanceAsCaptain("team2"),
 				Appearance.newInstance("neo"), Appearance.newInstance("hoo"),
 				Appearance.newInstance("prince"),
-				Appearance.newInstance("top"), Appearance.newInstance("bear"));
+				Appearance.newInstance("top"), Appearance.newInstance("bear"),
+				Appearance.newInstance("hensoes"));
 
 		addAppearancesFor("shifty", Appearance.newInstance("gash"));
 
@@ -36,21 +37,24 @@ public class AppearanceRepository implements InitializingBean {
 				Appearance.newInstanceAsCaptain("chalice"),
 				Appearance.newInstance("mutiny"),
 				Appearance.newInstanceAsCaptain("prince"),
-				Appearance.newInstance("dog"), Appearance.newInstance("pink"));
+				Appearance.newInstance("dog"), Appearance.newInstance("pink"),
+				Appearance.newInstance("gunt"));
 
 		addAppearancesFor("brad", Appearance.newInstance("gash"),
 				Appearance.newInstance("team2"), Appearance.newInstance("neo"),
 				Appearance.newInstance("hoo"),
 				Appearance.newInstanceAsPuttOffWinner("sinn"),
 				Appearance.newInstance("dog"),
-				Appearance.newInstanceAsCaptain("bear"));
+				Appearance.newInstanceAsCaptain("bear"),
+				Appearance.newInstance("hensoes"));
 
 		addAppearancesFor("robin", Appearance.newInstance("panthers"),
 				Appearance.newInstance("team2"),
 				Appearance.newInstanceAsCaptain("neo"),
 				Appearance.newInstanceAsCaptain("hoo"),
 				Appearance.newInstance("prince"),
-				Appearance.newInstance("dog"), Appearance.newInstance("bear"));
+				Appearance.newInstance("dog"), Appearance.newInstance("bear"),
+				Appearance.newInstance("hensoes"));
 
 		addAppearancesFor("mitch", Appearance.newInstance("panthers"),
 				Appearance.newInstance("team2"),
@@ -66,20 +70,21 @@ public class AppearanceRepository implements InitializingBean {
 				Appearance.newInstanceAsPuttOffWinner("chalice"),
 				Appearance.newInstanceAsCaptainAndPuttOffWinner("mutiny"),
 				Appearance.newInstance("sinn"), Appearance.newInstance("top"),
-				Appearance.newInstance("bear"));
+				Appearance.newInstance("bear"), Appearance.newInstance("gunt"));
 
 		addAppearancesFor("henso", Appearance.newInstance("panthers"),
 				Appearance.newInstance("scuzz"),
 				Appearance.newInstance("chalice"),
 				Appearance.newInstance("hoo"),
 				Appearance.newInstance("prince"),
-				Appearance.newInstance("dog"), Appearance.newInstance("bear"));
+				Appearance.newInstance("dog"), Appearance.newInstance("bear"),
+				Appearance.newInstanceAsCaptain("hensoes"));
 
 		addAppearancesFor("unit", Appearance.newInstance("panthers"),
 				Appearance.newInstance("scuzz"), Appearance.newInstance("neo"),
 				Appearance.newInstance("mutiny"),
 				Appearance.newInstance("sinn"), Appearance.newInstance("top"),
-				Appearance.newInstance("pink"));
+				Appearance.newInstance("pink"), Appearance.newInstanceAsCaptain("gunt"));
 
 		addAppearancesFor("vien", Appearance.newInstance("scuzz"));
 
@@ -87,7 +92,7 @@ public class AppearanceRepository implements InitializingBean {
 				Appearance.newInstance("neo"), Appearance.newInstance("hoo"),
 				Appearance.newInstance("prince"),
 				Appearance.newInstanceAsCaptain("dog"),
-				Appearance.newInstanceAsPuttOffWinner("bear"));
+				Appearance.newInstanceAsPuttOffWinner("bear"), Appearance.newInstance("gunt"));
 
 		addAppearancesFor("richg", Appearance.newInstance("mutiny"),
 				Appearance.newInstance("sinn"), Appearance.newInstance("top"));
@@ -97,7 +102,7 @@ public class AppearanceRepository implements InitializingBean {
 		addAppearancesFor("putt", Appearance.newInstanceAsPuttOffWinner("dog"),
 				Appearance.newInstance("pink"));
 
-		addAppearancesFor("coco", Appearance.newInstance("dog"));
+		addAppearancesFor("coco", Appearance.newInstance("dog"), Appearance.newInstance("hensoes"));
 
 		addAppearancesFor("nasher", Appearance.newInstance("neo"));
 
@@ -121,7 +126,9 @@ public class AppearanceRepository implements InitializingBean {
 		addAppearancesFor("foist", Appearance.newInstance("mutiny"),
 				Appearance.newInstance("prince"),
 				Appearance.newInstance("dog"),
-				Appearance.newInstanceAsCaptain("pink"));
+				Appearance.newInstanceAsCaptain("pink"), Appearance.newInstance("hensoes"));
+		
+		addAppearancesFor("bandix", Appearance.newInstanceAsPuttOffWinner("gunt"));
 
 	}
 

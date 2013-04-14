@@ -40,6 +40,52 @@ public class SessionRepository implements InitializingBean {
 		create2009();
 		create2010();
 		create2011();
+		create2012();
+	}
+
+	private void create2012() {
+		Match d23 = Match.newInstance("gunt",
+				createGroup("gunt", "snakes", "tom"),
+				createGroup("hensoes", "brad", "robin"));
+		Match d24 = Match.newInstance(Match.DRAW,
+				createGroup("gunt", "maddog", "bandix"),
+				createGroup("hensoes", "sturds", "foist"));
+		Match d25 = Match.newInstance("gunt", createGroup("gunt","east", "unit"),
+				createGroup("hensoes", "henso", "coco"));
+
+		sessions.add(Session.newInstance("2012", "1", SessionFormat.PAIRS, d23,
+				d24, d25));
+
+		Match sc23 = Match.newInstance("gunt",
+				createGroup("gunt", "bandix", "unit"),
+				createGroup("hensoes", "robin", "henso"));
+
+		Match sc24 = Match.newInstance("gunt",
+				createGroup("gunt", "east", "snakes"),
+				createGroup("hensoes", "sturds", "coco"));
+
+		Match sc25 = Match.newInstance("hensoes",
+				createGroup("gunt", "tom", "maddog"),
+				createGroup("hensoes", "foist", "brad"));
+
+		sessions.add(Session.newInstance("2012", "2", SessionFormat.PAIRS,
+				sc23, sc24, sc25));
+
+		Match s42 = Match.newInstance("gunt", createGroup("gunt", "bandix"),
+				createGroup("hensoes", "robin"));
+		Match s43 = Match.newInstance("hensoes", createGroup("gunt", "east"),
+				createGroup("hensoes", "foist"));
+		Match s44 = Match.newInstance("hensoes", createGroup("gunt", "tom"),
+				createGroup("hensoes", "sturds"));
+		Match s45 = Match.newInstance("hensoes", createGroup("gunt", "unit"),
+				createGroup("hensoes", "coco"));
+		Match s46 = Match.newInstance("gunt", createGroup("gunt", "maddog"),
+				createGroup("hensoes", "henso"));
+		Match s47 = Match.newInstance("gunt", createGroup("gunt", "snakes"),
+				createGroup("hensoes", "brad"));
+
+		sessions.add(Session.newInstance("2012", "3", SessionFormat.SINGLES,
+				s42, s43, s44, s45, s46, s47));
 	}
 
 	private Group createGroup(String teamId, String... members) {

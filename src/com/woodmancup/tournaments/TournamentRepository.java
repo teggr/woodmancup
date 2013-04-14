@@ -59,8 +59,18 @@ public class TournamentRepository implements InitializingBean {
 		tournaments.add(create2009());
 		tournaments.add(create2010());
 		tournaments.add(create2011());
+		tournaments.add(create2012());
 	}
 
+	private Tournament create2012() {
+		return Tournament.newInstance("2012", venueRepository
+				.findById("manorofgroves"), createDate("16/10/2012"), Team
+				.newInstanceAsWinner("gunt", "GUNT", "Blue"), Team
+				.newInstance("hensoes", "Bare naked henso's hensoes",
+						"Yellow"), sessionRepository
+				.findSessionsByTournamentId("2012"));
+	}
+	
 	private Tournament create2011() {
 		return Tournament.newInstance("2011", venueRepository
 				.findById("staverton"), createDate("16/09/2011"), Team

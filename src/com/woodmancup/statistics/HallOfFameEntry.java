@@ -4,10 +4,10 @@ import com.woodmancup.members.Member;
 
 public class HallOfFameEntry {
 	
-	public static HallOfFameEntry newInstance(int victories,
+	public static HallOfFameEntry newInstance(int appearances, int victories,
 			int alternativeWoodmanCupWins, int puttOffWins, int wins,
 			int draws, int losses, Member member) {
-		return new HallOfFameEntry(victories, alternativeWoodmanCupWins,
+		return new HallOfFameEntry(appearances, victories, alternativeWoodmanCupWins,
 				puttOffWins, wins, draws, losses, member);
 	}
 
@@ -19,10 +19,12 @@ public class HallOfFameEntry {
 	private int losses = 0;
 	private Member member;
 	private int position;
+	private int appearances = 0;
 	
-	private HallOfFameEntry(int victories, int alternativeWoodmanCupWins,
+	private HallOfFameEntry(int appearances, int victories, int alternativeWoodmanCupWins,
 			int puttOffWins, int wins, int draws, int losses, Member member) {
 		super();
+		this.appearances  = appearances;
 		this.victories = victories;
 		this.alternativeWoodmanCupWins = alternativeWoodmanCupWins;
 		this.puttOffWins = puttOffWins;
@@ -76,6 +78,10 @@ public class HallOfFameEntry {
 	
 	public int getPosition() {
 		return position;
+	}
+	
+	public int getAppearances() {
+		return appearances;
 	}
 
 }

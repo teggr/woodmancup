@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
+@RequestMapping("/stats")
 public class StatisticsController {
 
 	private StatisticsService statisticsService;
@@ -18,10 +19,16 @@ public class StatisticsController {
 		this.statisticsService = statisticsService;
 	}
 
-	@RequestMapping(value = "/statistics", method = RequestMethod.GET)
+	@RequestMapping(value = "/halloffame", method = RequestMethod.GET)
 	@ResponseBody
-	public List<HallOfFameEntry> list() {
+	public List<HallOfFameEntry> getHallOfFameEntries() {
 		return statisticsService.generateHallOfFameEntries();
+	}
+	
+	@RequestMapping(value = "/records", method = RequestMethod.GET)
+	@ResponseBody
+	public Records getRecords() {
+		return statisticsService.generateRecords();
 	}
 
 }

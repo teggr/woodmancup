@@ -49,6 +49,7 @@ public class MemberRepository implements InitializingBean {
 		members.add(Member.newInstance("denno", "Christian", "Dennison"));
 		members.add(Member.newInstance("ego", "Bryan", "Egan"));
 		members.add(Member.newInstance("foist", "Richard", "Foister"));
+		members.add(Member.newInstance("bandix", "James", "Mannix"));
 
 	}
 

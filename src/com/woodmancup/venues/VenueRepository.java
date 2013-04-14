@@ -24,6 +24,8 @@ public class VenueRepository implements InitializingBean {
 
 	@Override
 	public void afterPropertiesSet() throws Exception {
+		venues.add(Venue.newInstance("manorofgroves", "Manor of Groves", "CM21 0JU",
+				"http://www.manorofgroves.com/"));
 		venues.add(Venue.newInstance("bidford", "Bidford Grange", "B50 4LY",
 				"http://www.bidfordgrange.com/"));
 		venues.add(Venue.newInstance("dorset",

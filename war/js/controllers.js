@@ -4,6 +4,12 @@
 
 var controllers = angular.module('myApp.controllers', []);
 
+controllers.controller("StatsCtrl", [ '$scope', '$http', function($scope, $http) {
+	$http.get('api/stats/records').success(function(data) {
+		$scope.records = data;
+	});
+} ]);
+
 controllers.controller("PhotosCtrl", [ '$scope', '$http', function($scope, $http) {
 	$http.jsonp('https://picasaweb.google.com/data/feed/api/user/111339627865632981527?alt=json&callback=JSON_CALLBACK', {
 		headers : {
@@ -150,7 +156,7 @@ function TournamentCtrl($scope, $http, $routeParams) {
 TournamentCtrl.$inject = [ '$scope', '$http', '$routeParams' ];
 
 function HallOfFameCtrl($scope, $http) {
-	$http.get('api/statistics').success(function(data) {
+	$http.get('api/stats/halloffame').success(function(data) {
 		$scope.halloffameentries = data;
 	});
 }
