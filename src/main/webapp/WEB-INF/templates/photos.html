@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:substituteby="fragments/header :: headTag" >
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="../../../../../target/m2e-wtp/web-resources/css/site.css" />
+  	<script src="../../../../../target/m2e-wtp/web-resources/js/site.js"></script>
+</head>
+<body>
+
+	<div th:include="fragments/menu" ></div>
+
+	<div id="albums" class="container page">
+	
+		<h1>Albums</h1>
+		<div id="gallery">
+			
+		</div>
+	
+	</div>
+	<!-- /container -->
+	
+	  	
+  	<script type="text/javascript">
+  	/*<![CDATA[*/
+
+  		$(function(){
+  			
+  			var $thumbnailList = $("#gallery");
+  			
+  			$.getJSON("https://picasaweb.google.com/data/feed/api/user/111339627865632981527?alt=json",{
+  				headers : {
+  					"GData-Version": 2
+  				},
+  				jsonpCallback: 'jsonCallback',
+  			    contentType: "application/json",
+  			    dataType: 'jsonp'
+  			})
+  			.done(function(data){
+  				$.each(data.feed.entry, function(index,entry){
+
+  	  				var loadedIndex = 1;
+  					
+  					if(entry.gphoto$name && entry.gphoto$name.$t && entry.gphoto$name.$t.indexOf("WoodmanCup") != -1 ) {
+  						
+  						var img = new Image();
+  						
+  						// lazy show the photos one by one
+  						img.onload = function(e){
+  							img.onload = null;
+  							var link = document.createElement('a'),
+  							li = document.createElement('li')
+  							link.href = this.largeUrl;
+  							link.appendChild(this);
+  							li.appendChild(link);
+  							$thumbnailList[0].appendChild(li);
+  						
+  							setTimeout( function(){ 
+  								$(li).addClass('loaded');
+  							}, 25*loadedIndex++);
+  						};
+  						
+  						img['largeUrl'] = "album.html?album=" + entry.gphoto$id.$t + "&album_title=" + entry.title.$t;
+  						img.src = entry.media$group.media$thumbnail[0].url;
+  						img.title = entry.title.$t;
+  						
+  					}
+  				});
+  				
+  			});
+  			
+  		});
+  	
+	/*]]>*/
+  	</script>
+
+</body>
+</html>

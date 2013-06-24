@@ -26,8 +26,8 @@ public class Tournament {
 	private Team team1;
 	private Team team2;
 	private List<Session> sessions;
-	private List<Member> team1Members;
-	private List<Member> team2Members;
+	private List<TeamMember> team1Members;
+	private List<TeamMember> team2Members;
 
 	public Venue getVenue() {
 		return venue;
@@ -87,19 +87,19 @@ public class Tournament {
 		return points;
 	}
 
-	public void setTeam1Members(List<Member> team1Members) {
+	public void setTeam1Members(List<TeamMember> team1Members) {
 		this.team1Members = team1Members;
 	}
 
-	public List<Member> getTeam1Members() {
+	public List<TeamMember> getTeam1Members() {
 		return team1Members;
 	}
 
-	public void setTeam2Members(List<Member> team2Members) {
+	public void setTeam2Members(List<TeamMember> team2Members) {
 		this.team2Members = team2Members;
 	}
 
-	public List<Member> getTeam2Members() {
+	public List<TeamMember> getTeam2Members() {
 		return team2Members;
 	}
 }

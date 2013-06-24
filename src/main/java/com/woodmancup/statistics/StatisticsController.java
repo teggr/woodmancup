@@ -1,15 +1,13 @@
 package com.woodmancup.statistics;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-@RequestMapping("/stats")
+@RequestMapping("/stats.html")
 public class StatisticsController {
 
 	private StatisticsService statisticsService;
@@ -18,17 +16,12 @@ public class StatisticsController {
 	public StatisticsController(StatisticsService statisticsService) {
 		this.statisticsService = statisticsService;
 	}
-
-	@RequestMapping(value = "/halloffame", method = RequestMethod.GET)
-	@ResponseBody
-	public List<HallOfFameEntry> getHallOfFameEntries() {
-		return statisticsService.generateHallOfFameEntries();
-	}
 	
-	@RequestMapping(value = "/records", method = RequestMethod.GET)
-	@ResponseBody
-	public Records getRecords() {
-		return statisticsService.generateRecords();
+	@RequestMapping(method = RequestMethod.GET)
+	public String records(ModelMap modelMap) {
+		Records records = statisticsService.generateRecords();
+		modelMap.addAttribute("records", records);
+		return "stats";
 	}
 
 }

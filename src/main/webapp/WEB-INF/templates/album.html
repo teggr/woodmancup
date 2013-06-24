@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:substituteby="fragments/header :: headTag" >
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="../../../../../target/m2e-wtp/web-resources/css/site.css" />
+  	<script src="../../../../../target/m2e-wtp/web-resources/js/site.js"></script>
+</head>
+<body>
+
+	<div th:include="fragments/menu" ></div>
+
+	<div id="photos" class="container page">
+	
+		<h1 th:text="${title}">Album Title</h1>
+		<div id="gallery">
+		
+		</div>
+	
+	</div>
+	<!-- /container -->
+	
+  	<script type="text/javascript" th:inline="javascript">
+  	/*<![CDATA[*/
+
+  		$(function(){
+  			
+  			var $thumbnailList = $("#gallery");
+  			
+  			var albumid = /*[[${id}]]*/ '5';
+  			
+  			$.getJSON("https://picasaweb.google.com/data/feed/api/user/111339627865632981527/albumid/"+albumid+"?alt=json",{
+  				headers : {
+  					"GData-Version": 2
+  				},
+  				jsonpCallback: 'jsonCallback',
+  			    contentType: "application/json",
+  			    dataType: 'jsonp'
+  			})
+  			.done(function(data){
+  				
+  				var loadedIndex = 1;
+  				
+  				$.each(data.feed.entry, function(index,entry){
+  					
+  					var img = new Image();
+  						
+					// lazy show the photos one by one
+					img.onload = function(e){
+						img.onload = null;
+						var link = document.createElement('a'),
+						li = document.createElement('li')
+						link.href = this.largeUrl;
+						link.appendChild(this);
+						li.appendChild(link);
+						$thumbnailList[0].appendChild(li);
+					
+						setTimeout( function(){ 
+							$(li).addClass('loaded');
+						}, 25*loadedIndex++);
+					};
+					
+					img['largeUrl'] = entry.content.src;
+					img.src = entry.media$group.media$thumbnail[1].url;
+					img.title = entry.title.$t;
+  						
+  				});
+  				
+	  			// finally, initialize photobox on all retrieved images
+	  			$('#gallery').photobox('a', { thumbs:true }, callback);
+	  		
+	  			// using setTimeout to make sure all images were in the DOM, before the history.load() function is looking them up to match the url hash
+	  			setTimeout(window._photobox.history.load, 1000);
+	  			function callback(){
+	  				console.log('callback for loaded content:', this);
+	  			};
+  			});
+  			
+  			
+  		});
+  	
+	/*]]>*/
+  	</script>
+
+</body>
+</html>

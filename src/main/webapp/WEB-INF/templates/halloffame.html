@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:substituteby="fragments/header :: headTag" >
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="../../../../../target/m2e-wtp/web-resources/css/site.css" />
+  	<script src="../../../../../target/m2e-wtp/web-resources/js/site.js"></script>
+</head>
+<body>
+
+	<div th:include="fragments/menu" ></div>
+
+	<div id="hall-of-fame" class="container page">
+
+		<h1>Woodman Cup Hall Of Fame</h1>
+
+		<table id="hall-of-fame-table"
+			class="table  table-condensed  table-striped table-bordered">
+			<thead>
+				<tr>
+					<td>Pos</td>
+					<td>+/-</td>
+					<td>Player</td>
+					<td>Appearances</td>
+					<td>Victories</td>
+					<td>AWC</td>
+					<td>Putt</td>
+					<td>W</td>
+					<td>D</td>
+					<td>L</td>
+					<td>Total</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="entry : ${hallOfFameEntries}">
+					<td th:text="${ entry.position }">1</td>
+					<td></td>
+					<td
+						th:text="${ entry.member.firstname } + ' ' + ${ entry.member.surname }">Robin
+						Tegg</td>
+					<td th:text="${ entry.appearances }">8</td>
+					<td th:text="${ entry.victories }">6</td>
+					<td th:text="${ entry.alternativeWoodmanCupWins }">0</td>
+					<td th:text="${ entry.puttOffWins }">0</td>
+					<td th:text="${ entry.wins }">10</td>
+					<td th:text="${ entry.draws }">6</td>
+					<td th:text="${ entry.losses }">6</td>
+					<td th:text="${ entry.points }">50</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<div>
+
+			<table class="table table-condensed table-striped table-bordered">
+				<tbody>
+
+					<tr>
+						<td>Woodman Cup Victory</td>
+						<td>5 pts</td>
+					</tr>
+					<tr>
+						<td>Alternative Woodman Cup Win</td>
+						<td>4 pts</td>
+					</tr>
+					<tr>
+						<td>Putt Off Win</td>
+						<td>4 pts</td>
+					</tr>
+					<tr>
+						<td>Win</td>
+						<td>3 pts</td>
+					</tr>
+					<tr>
+						<td>Draw</td>
+						<td>1 pts</td>
+					</tr>
+					<tr>
+						<td>Loss</td>
+						<td>0 pts</td>
+					</tr>
+				</tbody>
+			</table>
+
+		</div>
+
+	</div>
+	<!-- /container -->
+
+</body>
+</html>

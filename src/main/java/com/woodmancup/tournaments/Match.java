@@ -34,5 +34,14 @@ public class Match {
 		return false;
 	}
 	
+	public String resultAsString(String teamId) {
+		if( winningTeamId == "draw" ) {
+			return "D";
+		} else if ( winningTeamId == teamId ) {
+			return "W";
+		}
+		return "";
+	}
+	
 
 }

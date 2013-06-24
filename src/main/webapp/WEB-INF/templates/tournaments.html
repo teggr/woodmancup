@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:substituteby="fragments/header :: headTag" >
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="../../../../../target/m2e-wtp/web-resources/css/site.css" />
+  	<script src="../../../../../target/m2e-wtp/web-resources/js/site.js"></script>
+</head>
+<body>
+
+	<div th:include="fragments/menu" ></div>
+	
+	<div id="tournaments" class="container page">
+
+		<h1>Tournaments</h1>
+		<table id="tournaments-table" class="table">
+			<thead>
+				<tr>
+					<td>Date</td>
+					<td>Venue</td>
+					<td></td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="tournament : ${tournaments}">
+					<td th:text="${ tournament.date }">2011</td>
+					<td th:text="${ tournament.venue.name }">Woodstock</td>
+					<td><a class="btn btn-primary " href="tournament.html"
+						th:href="@{tournament.html} + '?tournament=' + ${ tournament.id }">View The Results <i
+							class="icon-circle-arrow-right icon-white"></i></a></td>
+				</tr>
+			</tbody>
+		</table>
+
+	</div>
+	<!-- /container -->
+	
+</body>
+</html>

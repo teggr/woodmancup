@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:substituteby="fragments/header :: headTag" >
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="../../../../../target/m2e-wtp/web-resources/css/site.css" />
+  	<script src="../../../../../target/m2e-wtp/web-resources/js/site.js"></script>
+</head>
+<body>
+
+	<div th:include="fragments/menu" ></div>
+		
+	<div id="records" class="container page">
+
+		<h1>Kronenbourg World Of Records</h1>
+		
+		<table class="table  table-condensed  table-striped table-bordered">
+			<caption>Most likely to win the Woodman Cup</caption>
+			<thead>
+				<tr>
+					<td>Name</td>
+					<td>Points</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="entry : ${records.mostLikelyToWinTheWoodman}">
+					<td th:text="${ entry.member.firstname } + ' ' + ${ entry.member.surname }">Robin Tegg</td>
+					<td th:text="${ entry.value }">20</td>
+				</tr>
+			</tbody>
+		</table>
+		
+		<table class="table  table-condensed  table-striped table-bordered">
+			<caption>Most likely to win a match</caption>
+			<thead>
+				<tr>
+					<td>Name</td>
+					<td>Points</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="entry : ${records.mostLikelyToWin}">
+					<td th:text="${ entry.member.firstname } + ' ' + ${ entry.member.surname }">Robin Tegg</td>
+					<td th:text="${ entry.value }">20</td>
+				</tr>
+			</tbody>
+		</table>
+		
+		<table class="table  table-condensed  table-striped table-bordered">
+			<caption>Most likely to lose a match</caption>
+			<thead>
+				<tr>
+					<td>Name</td>
+					<td>Points</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="entry : ${records.mostLikelyToLose}">
+					<td th:text="${ entry.member.firstname } + ' ' + ${ entry.member.surname }">Robin Tegg</td>
+					<td th:text="${ entry.value }">20</td>
+				</tr>
+			</tbody>
+		</table>
+		
+		<table class="table  table-condensed  table-striped table-bordered">
+			<caption>Most likely to draw a match</caption>
+			<thead>
+				<tr>
+					<td>Name</td>
+					<td>Points</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="entry : ${records.mostLikelyToDraw}">
+					<td th:text="${ entry.member.firstname } + ' ' + ${ entry.member.surname }">Robin Tegg</td>
+					<td th:text="${ entry.value }">20</td>
+				</tr>
+			</tbody>
+		</table>
+	
+		<table class="table  table-condensed  table-striped table-bordered">
+			<caption>Longest unbeaten streak</caption>
+			<thead>
+				<tr>
+					<td>Name</td>
+					<td>Points</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="entry : ${records.longestUnbeatenStreak}">
+					<td th:text="${ entry.member.firstname } + ' ' + ${ entry.member.surname }">Robin Tegg</td>
+					<td th:text="${ entry.value }">20</td>
+				</tr>
+			</tbody>
+		</table>
+		
+		<table class="table  table-condensed  table-striped table-bordered">
+			<caption>Longest winning streak</caption>
+			<thead>
+				<tr>
+					<td>Name</td>
+					<td>Points</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="entry : ${records.longestWinningStreak}">
+					<td th:text="${ entry.member.firstname } + ' ' + ${ entry.member.surname }">Robin Tegg</td>
+					<td th:text="${ entry.value }">20</td>
+				</tr>
+			</tbody>
+		</table>
+		
+		<table class="table  table-condensed  table-striped table-bordered">
+			<caption>Longest losing streak</caption>
+			<thead>
+				<tr>
+					<td>Name</td>
+					<td>Points</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="entry : ${records.longestLosingStreak}">
+					<td th:text="${ entry.member.firstname } + ' ' + ${ entry.member.surname }">Robin Tegg</td>
+					<td th:text="${ entry.value }">20</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<table class="table  table-condensed  table-striped table-bordered">
+			<caption>Biggest bandits</caption>
+			<thead>
+				<tr>
+					<td>Name</td>
+					<td>Points</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="entry : ${records.biggestBandits}">
+					<td th:text="${ entry.member.firstname } + ' ' + ${ entry.member.surname }">Robin Tegg</td>
+					<td th:text="${ entry.value }">20</td>
+				</tr>
+			</tbody>
+		</table>
+		
+		<table class="table  table-condensed  table-striped table-bordered">
+			<caption>Best putters</caption>
+			<thead>
+				<tr>
+					<td>Name</td>
+					<td>Points</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="entry : ${records.bestPutters}">
+					<td th:text="${ entry.member.firstname } + ' ' + ${ entry.member.surname }">Robin Tegg</td>
+					<td th:text="${ entry.value }">20</td>
+				</tr>
+			</tbody>
+		</table>
+
+	</div>
+	<!-- /container -->
+	
+</body>
+</html>

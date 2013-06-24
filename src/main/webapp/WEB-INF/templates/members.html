@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:substituteby="fragments/header :: headTag" >
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="../../../../../target/m2e-wtp/web-resources/css/site.css" />
+  	<script src="../../../../../target/m2e-wtp/web-resources/js/site.js"></script>
+</head>
+<body>
+
+	<div th:include="fragments/menu" ></div>
+	
+	<div id="members" class="container page">
+	
+		<h1>Members</h1>
+		<table id="members-table"
+			class="table  table-condensed  table-striped ">
+			<thead>
+				<tr>
+					<td>Name</td>
+					<td>Appearances</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="member : ${members}" >
+					<td th:text="${ member.firstname } + ' ' + ${ member.surname }">Robin Tegg</td>
+					<td th:text="${ member.appearances.size() }">9</td>
+				</tr>
+			</tbody>
+		</table>
+	
+	</div>
+
+</body>
+</html>

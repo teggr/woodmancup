@@ -4,15 +4,14 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.woodmancup.venues.VenueRepository.VenueSort;
 
 @Controller
-@RequestMapping("/venues")
+@RequestMapping("/venues.html")
 public class VenueController {
 
 	private VenueRepository venueRepository;
@@ -23,15 +22,10 @@ public class VenueController {
 	}
 
 	@RequestMapping(method = RequestMethod.GET)
-	@ResponseBody
-	public List<Venue> list() {
-		return venueRepository.findAll(VenueSort.NAME);
+	public String venues(ModelMap modelMap) {
+		List<Venue> venues = venueRepository.findAll(VenueSort.NAME);
+		modelMap.addAttribute("venues", venues);
+		return "venues";
 	}
 	
-	@RequestMapping(method = RequestMethod.POST)
-	@ResponseBody
-	public Venue create(@RequestBody Venue venue)  {
-		return venueRepository.create(venue);
-	}
-
 }

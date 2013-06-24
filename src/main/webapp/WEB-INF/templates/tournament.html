@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:substituteby="fragments/header :: headTag" >
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="../../../../../target/m2e-wtp/web-resources/css/site.css" />
+  	<script src="../../../../../target/m2e-wtp/web-resources/js/site.js"></script>
+</head>
+<body>
+
+	<div th:include="fragments/menu" ></div>
+		
+	<div id="tournament" class="container page">
+
+		<h1 th:text="${ tournament.venue.name } + ' ' + ${ #dates.format( tournament.date, 'YYYY' ) }">Name Date</h1>
+
+		<h2 th:text="${ tournament.team1.name } + '[' + ${ tournament.team1Points } + '] vs ' + ${ tournament.team2.name } + ' [' + ${ tournament.team2Points } + ']'">Team 1 [5.5] vs Team 2 [6.5]</h2>
+
+		<table>
+			<tbody>
+				<tr>
+					<td> 
+						<table class="table table-bordered">
+							<tr th:each="player : ${tournament.team1Members}">
+								<td th:text="${ player.member.firstname } + ' ' + ${ player.member.surname }">Robin Tegg</td>
+								<td th:text="${ player.appearance.captain }? '(C)' : ''">(C)</td>
+							</tr>
+						</table>
+					</td>
+					<td></td>
+					<td>
+						<table class="table table-bordered">
+							<tr th:each="player : ${tournament.team2Members}">
+								<td th:text="${ player.member.firstname } + ' ' + ${ player.member.surname }">Player 2</td>
+								<td th:text="${ player.appearance.captain }? '(C)' : ''"></td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+
+
+		<h2>Results</h2>
+
+		<table class="table">
+			<tbody th:each="session : ${tournament.sessions}">
+				<tr class="info" >
+					<td colspan="7">
+						<h3 th:text="'Session ' + ${ session.sessionNumber } + ' - ' + ${ session.sessionFormat }"></h3>
+					</td>
+				</tr>
+				<tr th:each="match : ${session.matches}">
+					<td th:text="${match.resultAsString( tournament.team1.id )}">W</td>
+					<td th:text="${match.groups[0].members[0].surname}" >Tegg</td>
+					<td th:text="${#lists.size(match.groups[0].members)>1}? ${match.groups[0].members[1].surname} : ''" >Tegg2</td>
+					<td>vs</td>
+					<td th:text="${#lists.size(match.groups[1].members)>1}? ${match.groups[1].members[1].surname} : ''" >Tegg2</td>
+					<td th:text="${match.groups[1].members[0].surname}" >Tegg</td>
+					<td th:text="${match.resultAsString( tournament.team2.id )}"></td>
+				</tr>
+			</tbody>
+		</table>
+
+	</div>
+		
+</body>
+</html>
