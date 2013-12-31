@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+<header>
+	<div class="long-art"></div>
+	<nav class="navbar navbar-inverse">
+		<div class="navbar-inner">
+			<div class="container">
+				<a class="logo" href="index.html"></a> 
+				<a class="brand hidden-phone" href="index.html">Woodman Cup</a>
+				<div class="mobile-nav visible-phone">
+					<span class="mobile-nav-label">Navigate</span>
+					<select class="mobile-nav-select">
+						<option value="halloffame.html">Hall Of Fame</option>
+					    <option value="photos.html" >Photos</option>
+					    <option value="stats.html" >Stats</option>
+					    <option value="members.html" >Members</option>
+					    <option value="venues.html" >Venues</option>
+					    <option value="tournaments.html" >Tournaments</option>
+					</select>
+				</div>
+				<div class="hidden-phone">
+					<ul id="menu-bar" class="nav">
+					  	<li th:class="${ #strings.endsWith( #httpServletRequest.getServletPath() , 'index.html') }? 'active' : (${ #strings.endsWith( #httpServletRequest.getServletPath() , 'halloffame.html') }? 'active') " ><a href="halloffame.html">Hall Of Fame</a></li>
+					    <li th:class="${ #strings.endsWith( #httpServletRequest.getServletPath() , 'photos.html') }? 'active' : (${ #strings.endsWith( #httpServletRequest.getServletPath() , 'album.html') }? 'active')"><a href="photos.html" >Photos</a></li>
+					    <li th:class="${ #strings.endsWith( #httpServletRequest.getServletPath() , 'stats.html') }? 'active'"><a href="stats.html" >Stats</a></li>
+					    <li th:class="${ #strings.endsWith( #httpServletRequest.getServletPath() , 'members.html') }? 'active'"><a href="members.html" >Members</a></li>
+					    <li th:class="${ #strings.endsWith( #httpServletRequest.getServletPath() , 'venues.html') }? 'active'"><a href="venues.html" >Venues</a></li>
+					    <li th:class="${ #strings.endsWith( #httpServletRequest.getServletPath() , 'tournaments.html') }? 'active' : (${ #strings.endsWith( #httpServletRequest.getServletPath() , 'tournament.html') }? 'active')"><a href="tournaments.html" >Tournaments</a></li>
+					</ul>
+				</div>
+				<!--/.nav-collapse -->
+			</div>
+		</div>
+	</nav>
+</header>
+</body>
+</html>
